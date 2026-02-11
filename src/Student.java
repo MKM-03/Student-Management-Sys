@@ -3,7 +3,7 @@ import java.util.UUID;
 
 public class Student extends User {
     private final String studentID;
-    private String department;
+    private Department department;
     private String careerPath;
     private StudentStatus status;
     private LocalDate enrollmentDate;
@@ -13,9 +13,9 @@ public class Student extends User {
 
 
     public Student(String name, String email, String phoneNum,
-                   String department, String careerPath) {
+                   Department department, String careerPath) {
         super(name, email, phoneNum);
-        this.studentID = UUID.randomUUID().toString();
+        this.studentID = "STD-" + UUID.randomUUID();
         this.department = department;
         this.careerPath = careerPath;
         this.status = StudentStatus.ACTIVE;
@@ -26,7 +26,7 @@ public class Student extends User {
         return studentID;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
@@ -50,7 +50,7 @@ public class Student extends User {
         return yearLevel;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 

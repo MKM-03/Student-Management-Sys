@@ -1,6 +1,6 @@
 public interface StudentRepository {
 
-    void save(Student student);
+    void saveStudent(Student student);
 
     Student findById(String studentId);
 

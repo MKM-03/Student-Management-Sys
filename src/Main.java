@@ -9,9 +9,11 @@ public class Main {
                 "MK",
                 "mk@gmail.com",
                 "01012345678",
-                "IT",
+                Department.INFORMATION_TECHNOLOGY,
                 "Software Engineering"
         );
+
+
 
         service1.enrollStudent(student);
         System.out.println("Student enrolled successfully");
