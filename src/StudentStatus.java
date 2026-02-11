@@ -1,5 +1,9 @@
 public enum StudentStatus {
     ACTIVE,
     GRADUATED,
-    SUSPENDED
+    SUSPENDED,
+    DROPPED_OUT,
+    ON_LEAVE,
+    EXPELLED,
+    DECEASED
 }

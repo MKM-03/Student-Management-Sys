@@ -6,7 +6,7 @@ public class InMemoryStudentRepository implements StudentRepository{
 
 
     @Override
-    public void save(Student student) {
+    public void saveStudent(Student student) {
         students.put(student.getStudentID(), student);
     }
 

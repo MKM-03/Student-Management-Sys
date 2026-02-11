@@ -9,7 +9,7 @@ public class StudentService {
         if (studentRepository.existsById(student.getStudentID())) {
             throw new IllegalArgumentException("Student already exists");
         }
-        studentRepository.save(student);
+        studentRepository.saveStudent(student);
     }
 
     public Student findStudentById(String stdID) {
@@ -26,7 +26,7 @@ public class StudentService {
         }
         Student std = findStudentById(stdId);
         std.setGpa(newGpa);
-        studentRepository.save(std);
+        studentRepository.saveStudent(std);
     }
 
     public void promoteStudent(String stdId) {
@@ -35,7 +35,7 @@ public class StudentService {
             throw new IllegalArgumentException("Error! Only active students can be promoted");
         }
         std.setYearLevel(std.getYearLevel() + 1);
-        studentRepository.save(std);
+        studentRepository.saveStudent(std);
     }
 
     public void updateStudentStatus(String stdId, StudentStatus newStatus) {
@@ -45,6 +45,7 @@ public class StudentService {
                     "Student " + stdId + " already has status " + newStatus);
         }
         std.setStatus(newStatus);
-        studentRepository.save(std);
+        studentRepository.saveStudent(std);
     }
 }
+
