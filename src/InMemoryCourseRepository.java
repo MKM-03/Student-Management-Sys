@@ -20,8 +20,27 @@ public class InMemoryCourseRepository implements CourseRepository{
         return courses.get(courseId);
     }
 
+    public Course findByCode(String courseCode) {
+        for (Course course : courses.values()) {
+            if (course.getCourseCode().equals(courseCode)) {
+                return course;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Boolean existsById(String courseId) {
         return courses.containsKey(courseId);
+    }
+
+    @Override
+    public Boolean existsByCode(String courseCode) {
+        for (Course course : courses.values()) {
+            if (course.getCourseCode().equals(courseCode)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
