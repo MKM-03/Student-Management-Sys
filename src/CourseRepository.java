@@ -6,5 +6,9 @@ public interface CourseRepository {
 
     Course findById(String courseId);
 
+    Course findByCode(String courseCode);
+
     Boolean existsById(String courseId);
+
+    Boolean existsByCode(String courseCode);
 }
