@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryStudentRepository implements StudentRepository{
@@ -11,8 +13,8 @@ public class InMemoryStudentRepository implements StudentRepository{
     }
 
     @Override
-    public Student findById(String studentId) {
-        return students.get(studentId);
+    public void deleteById(String studentId) {
+        students.remove(studentId);
     }
 
     @Override
@@ -21,7 +23,34 @@ public class InMemoryStudentRepository implements StudentRepository{
     }
 
     @Override
-    public void deleteById(String studentId) {
-        students.remove(studentId);
+    public Student findById(String studentId) {
+        return students.get(studentId);
+    }
+
+    @Override
+    public Student findByName(String name) {
+        for (Student std : students.values()) {
+            if (std.getName().equals(name)) {
+                return std;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Student> listAll() {
+        return new ArrayList<>(students.values());
+    }
+
+    @Override
+    public List<Student> listByDepartment(Department department) {
+        List<Student> result = new ArrayList<>();
+
+        for (Student std : students.values()) {
+            if (std.getDepartment() == department) {
+                result.add(std);
+            }
+        }
+        return result;
     }
 }
