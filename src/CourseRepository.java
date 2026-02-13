@@ -16,5 +16,5 @@ public interface CourseRepository {
 
     List<Course> listAll();
 
-    List<Course> listByDepartment();
+    List<Course> listByDepartment(Department department);
 }
