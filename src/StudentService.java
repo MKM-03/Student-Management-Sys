@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class StudentService {
     private final StudentRepository studentRepository;
 
@@ -15,7 +17,15 @@ public class StudentService {
     public Student findStudentById(String stdID) {
         Student std = studentRepository.findById(stdID);
         if (std == null) {
-            throw new IllegalArgumentException("Student was not found");
+            throw new IllegalArgumentException("Student was not found with ID: " + stdID);
+        }
+        return std;
+    }
+
+    public Student findStudentByName(String name) {
+        Student std = studentRepository.findByName(name);
+        if (std == null) {
+            throw new IllegalArgumentException("Student was not found with name: " + name);
         }
         return std;
     }
@@ -46,6 +56,15 @@ public class StudentService {
         }
         std.setStatus(newStatus);
         studentRepository.saveStudent(std);
+    }
+
+    public List<Student> listAllStudents() { return studentRepository.listAll(); }
+
+    public List<Student> listByDepartment(Department department) {
+        if (department == null) {
+            throw new IllegalArgumentException("Error! Department cannot be empty");
+        }
+        return studentRepository.listByDepartment(department);
     }
 }
 
