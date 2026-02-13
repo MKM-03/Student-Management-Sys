@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryCourseRepository implements CourseRepository{
@@ -42,5 +44,22 @@ public class InMemoryCourseRepository implements CourseRepository{
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Course> listAll() {
+        return new ArrayList<>(courses.values());
+    }
+
+    @Override
+    public List<Course> listByDepartment(Department department) {
+        List<Course> result = new ArrayList<>();
+
+        for (Course course : courses.values()) {
+            if (course.getDepartment() == department) {
+                result.add(course);
+            }
+        }
+        return result;
     }
 }
