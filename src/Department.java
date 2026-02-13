@@ -4,5 +4,6 @@ public enum Department {
     BUSINESS,
     LINGUISTICS,
     MEDIA_COMMUNICATION,
-    LEGAL_STUDIES
+    LEGAL_STUDIES,
+    GENERAL
 }
