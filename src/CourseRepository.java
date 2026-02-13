@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface CourseRepository {
 
     void saveCourse(Course course);
@@ -11,4 +13,8 @@ public interface CourseRepository {
     Boolean existsById(String courseId);
 
     Boolean existsByCode(String courseCode);
+
+    List<Course> listAll();
+
+    List<Course> listByDepartment();
 }
