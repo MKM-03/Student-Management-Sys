@@ -25,4 +25,12 @@ public class Transcript {
         }
         return totalCredits == 0 ? 0.0 : points / totalCredits;
     }
+
+    @Override
+    public String toString() {
+        return "Transcript{ " +
+                "student= " + (student != null ? student.getName() : "N/A") +
+                " | totalSemesters= " + records.size() +
+                " | overallGpa= " + String.format("%.2f", calculateOverallGpa()) + "}";
+    }
 }

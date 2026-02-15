@@ -71,4 +71,14 @@ public class Course {
     public void setStatus(CourseStatus status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Course{ " +
+                "ID: " + courseId +
+                " | Code: " + courseCode +
+                " | Title: " + title +
+                " | Department: " + department +
+                " | Hours: " + creditsHours + " }";
+    }
 }

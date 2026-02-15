@@ -82,5 +82,15 @@ public class Student extends User {
         this.gpa = gpa;
     }
 
+    @Override
+    public String toString() {
+        return "Student{ " +
+                "ID: " + studentID +
+                " | Name: " + getName() +
+                " | Department: " + department +
+                " | CareerPath: " + careerPath +
+                " | Status: " + status +
+                " | enrolled: " + enrollmentDate + " }";
+    }
 
 }

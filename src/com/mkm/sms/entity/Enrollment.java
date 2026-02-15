@@ -21,4 +21,12 @@ public class Enrollment {
     public void setGrade(Double grade) {
         this.grade = grade;
     }
+
+    @Override
+    public String toString() {
+        return "Enrollment{ " +
+                "courseCode: " + course.getCourseCode() +
+                " | grade=" + (grade == null ? "N/A" : grade) +
+                " }";
+    }
 }
