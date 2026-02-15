@@ -1,3 +1,9 @@
+package com.mkm.sms.service;
+
+import com.mkm.sms.entity.Course;
+import com.mkm.sms.enums.Department;
+import com.mkm.sms.repository.CourseRepository;
+
 import java.util.List;
 
 public class CourseService {

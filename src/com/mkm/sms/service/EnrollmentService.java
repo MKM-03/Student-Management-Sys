@@ -1,3 +1,9 @@
+package com.mkm.sms.service;
+
+import com.mkm.sms.entity.Course;
+import com.mkm.sms.entity.Enrollment;
+import com.mkm.sms.entity.Student;
+
 public class EnrollmentService {
 
 

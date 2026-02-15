@@ -1,4 +1,4 @@
-# Student Management System
+# com.mkm.sms.entity.Student Management System
 
 A backend system for managing students, enrollments, and academic progression.
 
@@ -9,8 +9,8 @@ A backend system for managing students, enrollments, and academic progression.
 - MySQL (or H2 for dev)
 
 ## Features (WIP)
-- Student registration
-- Student status management
+- com.mkm.sms.entity.Student registration
+- com.mkm.sms.entity.Student status management
 - Year level promotion
 - RESTful API design
 

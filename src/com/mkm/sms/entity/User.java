@@ -1,3 +1,5 @@
+package com.mkm.sms.entity;
+
 public class User {
     private String name;
     private String email;

@@ -1,3 +1,5 @@
+package com.mkm.sms.enums;
+
 public enum StudentStatus {
     ACTIVE,
     GRADUATED,

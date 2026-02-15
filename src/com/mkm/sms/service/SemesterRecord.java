@@ -1,3 +1,9 @@
+package com.mkm.sms.service;
+
+import com.mkm.sms.entity.Enrollment;
+import com.mkm.sms.entity.Student;
+import com.mkm.sms.model.Semester;
+
 import java.util.ArrayList;
 import java.util.List;
 

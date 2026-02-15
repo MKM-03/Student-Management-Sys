@@ -1,3 +1,11 @@
+package com.mkm.sms;
+
+import com.mkm.sms.entity.Student;
+import com.mkm.sms.enums.Department;
+import com.mkm.sms.memory.InMemoryStudentRepository;
+import com.mkm.sms.repository.StudentRepository;
+import com.mkm.sms.service.StudentService;
+
 public class Main {
     public static void main(String[] args) {
 

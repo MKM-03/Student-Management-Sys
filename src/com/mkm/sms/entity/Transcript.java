@@ -1,3 +1,7 @@
+package com.mkm.sms.entity;
+
+import com.mkm.sms.service.SemesterRecord;
+
 import java.util.List;
 
 public class Transcript {

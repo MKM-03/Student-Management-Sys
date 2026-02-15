@@ -1,3 +1,8 @@
+package com.mkm.sms.entity;
+
+import com.mkm.sms.enums.Department;
+import com.mkm.sms.enums.StudentStatus;
+
 import java.time.LocalDate;
 import java.util.UUID;
 

@@ -1,9 +1,15 @@
+package com.mkm.sms.memory;
+
+import com.mkm.sms.entity.Student;
+import com.mkm.sms.enums.Department;
+import com.mkm.sms.repository.StudentRepository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryStudentRepository implements StudentRepository{
+public class InMemoryStudentRepository implements StudentRepository {
     private final Map<String, Student> students = new HashMap<>();
 
 

@@ -1,3 +1,7 @@
+package com.mkm.sms.entity;
+import com.mkm.sms.enums.CourseStatus;
+import com.mkm.sms.enums.Department;
+
 import java.util.UUID;
 
 public class Course {

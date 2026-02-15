@@ -1,3 +1,8 @@
+package com.mkm.sms.repository;
+
+import com.mkm.sms.entity.Student;
+import com.mkm.sms.enums.Department;
+
 import java.util.List;
 
 public interface StudentRepository {

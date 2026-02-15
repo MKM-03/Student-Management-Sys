@@ -1,3 +1,5 @@
+package com.mkm.sms.entity;
+
 public class Enrollment {
     private final Course course;
     private Double grade;

@@ -1,3 +1,10 @@
+package com.mkm.sms.service;
+
+import com.mkm.sms.entity.Student;
+import com.mkm.sms.enums.Department;
+import com.mkm.sms.enums.StudentStatus;
+import com.mkm.sms.repository.StudentRepository;
+
 import java.util.List;
 
 public class StudentService {

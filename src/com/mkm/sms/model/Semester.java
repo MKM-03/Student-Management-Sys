@@ -1,3 +1,5 @@
+package com.mkm.sms.model;
+
 import java.time.LocalDate;
 
 public record Semester(String id, String name, LocalDate startDate, LocalDate endDate) {
