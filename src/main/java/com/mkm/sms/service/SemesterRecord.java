@@ -21,7 +21,7 @@ public class SemesterRecord {
         this.semester = semester;
     }
 
-    public boolean isAlreadyEnrolled(Course courseCode) {
+    public boolean isAlreadyEnrolled(String courseCode) {
         for (Enrollment e : enrollments) {
             if (e.getCourse().getCourseCode().equals(courseCode)) {
                 return true;
