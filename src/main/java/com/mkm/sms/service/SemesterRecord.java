@@ -1,5 +1,6 @@
 package com.mkm.sms.service;
 
+import com.mkm.sms.entity.Course;
 import com.mkm.sms.entity.Enrollment;
 import com.mkm.sms.entity.Student;
 import com.mkm.sms.enums.EnrollmentStatus;
@@ -18,6 +19,15 @@ public class SemesterRecord {
     public SemesterRecord(Student student, Semester semester) {
         this.student = student;
         this.semester = semester;
+    }
+
+    public boolean isAlreadyEnrolled(Course courseCode) {
+        for (Enrollment e : enrollments) {
+            if (e.getCourse().getCourseCode().equals(courseCode)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addEnrollment(Enrollment e) {
@@ -53,6 +63,14 @@ public class SemesterRecord {
         return status;
     }
 
+    public Student getStudent() { return student; }
+
+    public Semester getSemester() { return semester; }
+
+    public List<Enrollment> getEnrollments() {
+        return new ArrayList<>(enrollments);
+    }
+
     public boolean isLocked() {
         return status == EnrollmentStatus.LOCKED;
     }
@@ -67,5 +85,15 @@ public class SemesterRecord {
 
     public void lock() {
         this.status = EnrollmentStatus.LOCKED;
+    }
+
+    @Override
+    public String toString() {
+        return "SemesterRecord{ " +
+                "semester=" + semester.name() +
+                " | status=" + status +
+                " | credits=" + getTotalCredits() +
+                " | gpa=" + String.format("%.2f", calculateSemesterGpa()) +
+                " }";
     }
 }
