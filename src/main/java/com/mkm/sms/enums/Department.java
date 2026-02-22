@@ -1,0 +1,11 @@
+package com.mkm.sms.enums;
+
+public enum Department {
+    INFORMATION_TECHNOLOGY,
+    GRAPHIC_DESIGN,
+    BUSINESS,
+    LINGUISTICS,
+    MEDIA_COMMUNICATION,
+    LEGAL_STUDIES,
+    GENERAL
+}
