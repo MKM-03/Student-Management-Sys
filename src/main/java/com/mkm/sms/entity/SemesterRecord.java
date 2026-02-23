@@ -1,20 +1,37 @@
-package com.mkm.sms.service;
+package com.mkm.sms.entity;
 
-import com.mkm.sms.entity.Course;
-import com.mkm.sms.entity.Enrollment;
-import com.mkm.sms.entity.Student;
 import com.mkm.sms.enums.EnrollmentStatus;
-import com.mkm.sms.model.Semester;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Entity(name = "semester_record")
 public class SemesterRecord {
-    private final Student student;
-    private final Semester semester;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "semester_id", nullable = false)
+    private Semester semester;
+
+    @Enumerated(EnumType.STRING)
     private EnrollmentStatus status = EnrollmentStatus.DRAFT;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "semeester_record_id")
     private final List<Enrollment> enrollments = new ArrayList<>();
 
+
+
+    protected SemesterRecord() {}
 
     public SemesterRecord(Student student, Semester semester) {
         this.student = student;
@@ -90,7 +107,7 @@ public class SemesterRecord {
     @Override
     public String toString() {
         return "SemesterRecord{ " +
-                "semester=" + semester.name() +
+                "semester=" + semester.getName() +
                 " | status=" + status +
                 " | credits=" + getTotalCredits() +
                 " | gpa=" + String.format("%.2f", calculateSemesterGpa()) +
