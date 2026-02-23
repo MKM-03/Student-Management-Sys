@@ -1,18 +1,37 @@
 package com.mkm.sms.entity;
 import com.mkm.sms.enums.CourseStatus;
 import com.mkm.sms.enums.Department;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
+
+@Entity
+@Table(name = "courses")
 public class Course {
-    private final String courseId;
-    private final String courseCode;
+
+    @Id
+    @Column(unique = true, nullable = false)
+    private String courseId;
+
+    @Column(unique = true, nullable = false)
+    private String courseCode;
+
+    @Column(nullable = false)
     private String title;
+
     private String description;
+
     private int creditsHours;
+
+    @Enumerated(EnumType.STRING)
     private Department department;
+
+    @Enumerated(EnumType.STRING)
     private CourseStatus status;
 
+
+    protected Course() {}
 
     public Course(String courseCode,
                   String title,

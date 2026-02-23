@@ -1,11 +1,25 @@
 package com.mkm.sms.entity;
 
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
+
+@Entity(name = "enrollments")
 public class Enrollment {
-    private final String enrollmentId;
-    private final Course course;
+
+    @Id
+    @Column(unique = true, nullable = false)
+    private String enrollmentId;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
     private Double grade;
+
+
+    protected Enrollment() {}
 
     public Enrollment(Course course) {
         this.enrollmentId = "ENR-" + UUID.randomUUID();

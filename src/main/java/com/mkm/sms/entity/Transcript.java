@@ -1,12 +1,29 @@
 package com.mkm.sms.entity;
 
-import com.mkm.sms.service.SemesterRecord;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+
+
+@Entity
+@Table(name = "transcripts")
 public class Transcript {
-    private final Student student;
-    private final List<SemesterRecord> records;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @OneToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
+
+    @OneToMany
+    @JoinColumn(name = "transcript_id")
+    private List<SemesterRecord> records;
+
+
+    protected Transcript() {}
 
     public Transcript(Student student, List<SemesterRecord> records) {
         this.student = student;

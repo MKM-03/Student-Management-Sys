@@ -2,20 +2,35 @@ package com.mkm.sms.entity;
 
 import com.mkm.sms.enums.Department;
 import com.mkm.sms.enums.StudentStatus;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
+
+@Entity
+@Table(name = "students")
 public class Student extends User {
-    private final String studentID;
+
+    @Id
+    @Column(unique = true, nullable = false)
+    private String studentID;
+
+    @Enumerated(EnumType.STRING)
     private Department department;
+
     private String careerPath;
+
+    @Enumerated(EnumType.STRING)
     private StudentStatus status;
+
     private LocalDate enrollmentDate;
+
     private double gpa = 0;
+
     private int yearLevel = 1;
 
-
+    protected Student() {}
 
     public Student(String name, String email, String phoneNum,
                    Department department, String careerPath) {
