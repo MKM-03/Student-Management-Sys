@@ -18,15 +18,12 @@ public class StudentService {
         if (studentRepository.existsById(student.getStudentID())) {
             throw new IllegalArgumentException("Student already exists");
         }
-        studentRepository.saveStudent(student);
+        studentRepository.save(student);
     }
 
     public Student findStudentById(String stdID) {
-        Student std = studentRepository.findById(stdID);
-        if (std == null) {
-            throw new IllegalArgumentException("Student was not found with ID: " + stdID);
-        }
-        return std;
+        return studentRepository.findById(stdID)
+                .orElseThrow(() -> new IllegalArgumentException("Student was not found with ID: " + stdID));
     }
 
     public Student findStudentByName(String name) {
@@ -43,7 +40,7 @@ public class StudentService {
         }
         Student std = findStudentById(stdId);
         std.setGpa(newGpa);
-        studentRepository.saveStudent(std);
+        studentRepository.save(std);
     }
 
     public void promoteStudent(String stdId) {
@@ -52,7 +49,7 @@ public class StudentService {
             throw new IllegalArgumentException("Error! Only active students can be promoted");
         }
         std.setYearLevel(std.getYearLevel() + 1);
-        studentRepository.saveStudent(std);
+        studentRepository.save(std);
     }
 
     public void updateStudentStatus(String stdId, StudentStatus newStatus) {
@@ -62,10 +59,10 @@ public class StudentService {
                     "Student " + stdId + " already has status " + newStatus);
         }
         std.setStatus(newStatus);
-        studentRepository.saveStudent(std);
+        studentRepository.save(std);
     }
 
-    public List<Student> listAllStudents() { return studentRepository.listAll(); }
+    public List<Student> listAllStudents() { return studentRepository.findAll(); }
 
     public List<Student> listByDepartment(Department department) {
         if (department == null) {
