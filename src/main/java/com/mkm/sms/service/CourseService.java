@@ -54,6 +54,12 @@ public class CourseService {
                 .orElseThrow(() -> new IllegalArgumentException("Course not found by ID: " + courseId));
     }
 
+    public void deleteCourse(String courseId) {
+        if (!courseRepository.existsById(courseId)) {
+            throw new IllegalArgumentException("Course not found: " + courseId);
+        }
+        courseRepository.deleteById(courseId);
+    }
 
     public Course findCourseByCode(String courseCode) {
         Course course = courseRepository.findByCourseCode(courseCode);
