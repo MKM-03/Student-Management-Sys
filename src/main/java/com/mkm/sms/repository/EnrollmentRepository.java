@@ -1,18 +1,15 @@
 package com.mkm.sms.repository;
 
-import com.mkm.sms.service.SemesterRecord;
+import com.mkm.sms.entity.SemesterRecord;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface EnrollmentRepository {
+public interface EnrollmentRepository extends JpaRepository<SemesterRecord, String> {
 
-    void save(SemesterRecord record);
-
-    List<SemesterRecord> findByStudentId(String stdId);
+    List<SemesterRecord> findByStudentStudentID(String stdId);
 
     List<SemesterRecord> findBySemesterId(String semId);
 
-    SemesterRecord findByStudentIdAndSemesterId(String stdId, String semId);
-
-    void deleteByStudentIdAndSemsterId(String stdId, String semId);
+    SemesterRecord findByStudentStudentIDAndSemesterId(String stdId, String semId);
 }
