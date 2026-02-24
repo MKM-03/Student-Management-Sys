@@ -65,6 +65,13 @@ public class StudentService {
         studentRepository.save(std);
     }
 
+    public void deleteStudent(String studentId) {
+        if (!studentRepository.existsById(studentId)) {
+            throw new IllegalArgumentException("Student not found by ID: " + studentId);
+        }
+        studentRepository.deleteById(studentId);
+    }
+
     public List<Student> listAllStudents() { return studentRepository.findAll(); }
 
     public List<Student> listByDepartment(Department department) {
