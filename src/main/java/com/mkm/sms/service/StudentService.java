@@ -4,9 +4,12 @@ import com.mkm.sms.entity.Student;
 import com.mkm.sms.enums.Department;
 import com.mkm.sms.enums.StudentStatus;
 import com.mkm.sms.repository.StudentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class StudentService {
     private final StudentRepository studentRepository;
 
