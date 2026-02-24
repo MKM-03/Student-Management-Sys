@@ -2,9 +2,12 @@ package com.mkm.sms.service;
 
 import com.mkm.sms.entity.Course;
 import com.mkm.sms.entity.Enrollment;
+import com.mkm.sms.entity.SemesterRecord;
 import com.mkm.sms.entity.Student;
-import com.mkm.sms.enums.EnrollmentStatus;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class EnrollmentService {
 
 

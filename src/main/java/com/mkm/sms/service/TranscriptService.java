@@ -1,12 +1,16 @@
 package com.mkm.sms.service;
 
+import com.mkm.sms.entity.SemesterRecord;
 import com.mkm.sms.entity.Student;
 import com.mkm.sms.entity.Transcript;
 import com.mkm.sms.repository.EnrollmentRepository;
 import com.mkm.sms.repository.StudentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class TranscriptService {
     private final StudentRepository stdRepository;
     private final EnrollmentRepository enrollRepository;
@@ -20,12 +24,10 @@ public class TranscriptService {
     }
 
     public Transcript generateTranscript(String studentId) {
-        Student student = stdRepository.findById(studentId);
-        if (student == null) {
-            throw new IllegalArgumentException("Student not found by ID: " + studentId);
-        }
+        Student student = stdRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Student was not found by ID: " + studentId));
 
-        List<SemesterRecord> records = enrollRepository.findByStudentId(studentId);
+        List<SemesterRecord> records = enrollRepository.findByStudentStudentID(studentId);
         if (records.isEmpty()) {
             throw new IllegalStateException("No semester records were found for the student by ID: " + studentId);
         }
@@ -33,7 +35,7 @@ public class TranscriptService {
         Transcript transcript = new Transcript(student, records);
         double overallGpa = transcript.calculateOverallGpa();
         student.setGpa(overallGpa);
-        stdRepository.saveStudent(student);
+        stdRepository.save(student);
 
         return transcript;
     }
