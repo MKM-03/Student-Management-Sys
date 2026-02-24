@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course, String> {
 
-    Course findByCode(String courseCode);
+    Course findByCourseCode(String courseCode);
 
-    Boolean existsByCode(String courseCode);
+    Boolean existsByCourseCode(String courseCode);
 
-    List<Course> listByDepartment(Department department);
+    List<Course> findByDepartment(Department department);
 }
