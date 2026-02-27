@@ -1,9 +1,6 @@
 package com.mkm.sms.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -15,7 +12,7 @@ public class Semester {
 
     @Id
     @Column(unique = true, nullable = false)
-    private String id;
+    private String semesterId;
 
     @Column(nullable = false)
     private String name;
@@ -32,17 +29,23 @@ public class Semester {
         if (startDate.isAfter(endDate)) {
             throw new IllegalArgumentException("Start date must be before end date");
         }
-        this.id = "SEM- " + UUID.randomUUID();
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public String getId() { return id; }
+    public String getId() { return semesterId; }
 
     public String getName() { return name; }
 
     public LocalDate getStartDate() { return startDate; }
 
     public LocalDate getEndDate() { return endDate; }
+
+    @PrePersist
+    private void generateId() {
+        if (this.semesterId == null) {
+            this.semesterId = "SEM-" + UUID.randomUUID();
+        }
+    }
 }

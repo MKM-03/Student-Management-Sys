@@ -39,7 +39,6 @@ public class Course {
                   int creditsHours,
                   Department department) {
 
-        this.courseId = "CRS-" + UUID.randomUUID();
         this.courseCode = courseCode;
         this.title = title;
         this.description = description;
@@ -89,6 +88,13 @@ public class Course {
 
     public void setStatus(CourseStatus status) {
         this.status = status;
+    }
+
+    @PrePersist
+    private void generateId() {
+        if (this.courseId == null) {
+            this.courseId = "CRS-" + UUID.randomUUID();
+        }
     }
 
     @Override

@@ -35,7 +35,6 @@ public class Student extends User {
     public Student(String name, String email, String phoneNum,
                    Department department, String careerPath) {
         super(name, email, phoneNum);
-        this.studentID = "STD-" + UUID.randomUUID();
         this.department = department;
         this.careerPath = careerPath;
         this.status = StudentStatus.ACTIVE;
@@ -95,6 +94,13 @@ public class Student extends User {
             throw new IllegalArgumentException("Error!! GPA must be between 0.0 and 4.0");
         }
         this.gpa = gpa;
+    }
+
+    @PrePersist
+    private void generateId() {
+        if (this.studentID == null) {
+            this.studentID = "STD-" + UUID.randomUUID();
+        }
     }
 
     @Override
