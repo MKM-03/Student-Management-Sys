@@ -78,7 +78,7 @@ public class StudentService {
         if (department == null) {
             throw new IllegalArgumentException("Error! Department cannot be empty");
         }
-        return studentRepository.listByDepartment(department);
+        return studentRepository.findByDepartment(department);
     }
 }
 
