@@ -18,9 +18,6 @@ public class StudentService {
     }
 
     public void enrollStudent(Student student) {
-        if (studentRepository.existsById(student.getStudentID())) {
-            throw new IllegalArgumentException("Student already exists");
-        }
         studentRepository.save(student);
     }
 

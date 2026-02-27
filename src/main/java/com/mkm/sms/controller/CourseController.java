@@ -34,6 +34,11 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Course>> getAllCourses() {
+        return ResponseEntity.ok(courseService.findAllCourses());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Course> getCourseById(@PathVariable String id) {
         return ResponseEntity.ok(courseService.findCourseById(id));

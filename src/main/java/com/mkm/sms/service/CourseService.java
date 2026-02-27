@@ -71,7 +71,7 @@ public class CourseService {
         return course;
     }
 
-        public List<Course> listAllCourses() { return courseRepository.findAll(); }
+        public List<Course> findAllCourses() { return courseRepository.findAll(); }
 
     public List<Course> listByDepartment(Department department) {
         if (department == null) {
