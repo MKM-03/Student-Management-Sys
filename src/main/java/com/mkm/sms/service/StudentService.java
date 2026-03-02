@@ -6,6 +6,7 @@ import com.mkm.sms.enums.StudentStatus;
 import com.mkm.sms.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -18,6 +19,7 @@ public class StudentService {
     }
 
     public void enrollStudent(Student student) {
+        student.setStudentNumber(generateStudentNumber(student.getDepartment(), student.getEnrollmentDate()));
         studentRepository.save(student);
     }
 
@@ -76,6 +78,21 @@ public class StudentService {
             throw new IllegalArgumentException("Error! Department cannot be empty");
         }
         return studentRepository.findByDepartment(department);
+    }
+
+    private String generateStudentNumber(Department department, LocalDate enrollmentDate) {
+        int year = enrollmentDate.getYear();
+        int count = studentRepository.countByDepartmentAndYear(department, year) + 1;
+        String deptCode = switch (department) {
+            case INFORMATION_TECHNOLOGY -> "IT";
+            case BUSINESS -> "BUS";
+            case LINGUISTICS -> "LNG";
+            case GRAPHIC_DESIGN -> "GD";
+            case MEDIA_COMMUNICATION -> "MC";
+            case LEGAL_STUDIES -> "LAW";
+            case GENERAL -> "GEN";
+        };
+        return String.format("%d-%s-%04d", year, deptCode, count);
     }
 }
 

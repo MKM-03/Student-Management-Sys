@@ -16,6 +16,9 @@ public class Student extends User {
     @Column(unique = true, nullable = false)
     private String studentID;
 
+    @Column(unique = true, nullable = false)
+    private String studentNumber;
+
     @Enumerated(EnumType.STRING)
     private Department department;
 
@@ -45,6 +48,10 @@ public class Student extends User {
         return studentID;
     }
 
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
     public Department getDepartment() {
         return department;
     }
@@ -67,6 +74,10 @@ public class Student extends User {
 
     public int getYearLevel() {
         return yearLevel;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
     }
 
     public void setDepartment(Department department) {
