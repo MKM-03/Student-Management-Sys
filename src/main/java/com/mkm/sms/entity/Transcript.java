@@ -43,6 +43,14 @@ public class Transcript {
         return totalCredits == 0 ? 0.0 : points / totalCredits;
     }
 
+    public String getId() { return id; }
+
+    public Student getStudent() { return student; }
+
+    public List<SemesterRecord> getRecords() { return records; }
+
+    public double getOverallGpa() { return calculateOverallGpa(); }
+
     @Override
     public String toString() {
         return "Transcript{ " +
