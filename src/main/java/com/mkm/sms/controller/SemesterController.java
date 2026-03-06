@@ -3,7 +3,6 @@ package com.mkm.sms.controller;
 
 import com.mkm.sms.entity.Semester;
 import com.mkm.sms.repository.SemesterRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +17,6 @@ public class SemesterController {
 
     public SemesterController(SemesterRepository semesterRepository) {
         this.semesterRepository = semesterRepository;
-    }
-
-    @PostMapping
-    public ResponseEntity<Semester> createSemester(@RequestBody Semester semester) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(semesterRepository.save(semester));
     }
 
     @GetMapping
