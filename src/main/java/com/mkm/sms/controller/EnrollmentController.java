@@ -4,6 +4,7 @@ package com.mkm.sms.controller;
 import com.mkm.sms.entity.*;
 import com.mkm.sms.repository.CourseRepository;
 import com.mkm.sms.repository.EnrollmentRepository;
+import com.mkm.sms.repository.SemesterRepository;
 import com.mkm.sms.repository.StudentRepository;
 import com.mkm.sms.service.EnrollmentService;
 import com.mkm.sms.service.TranscriptService;
@@ -22,6 +23,7 @@ public class EnrollmentController {
     private final TranscriptService transcriptService;
     private final StudentRepository studentRepository;
     private final CourseRepository courseRepository;
+    private final SemesterRepository semesterRepository;
     private final EnrollmentRepository enrollmentRepository;
 
 
@@ -30,12 +32,14 @@ public class EnrollmentController {
             TranscriptService transcriptService,
             StudentRepository studentRepository,
             CourseRepository courseRepository,
+            SemesterRepository semesterRepository,
             EnrollmentRepository enrollmentRepository) {
 
         this.enrollmentService = enrollmentService;
         this.transcriptService = transcriptService;
         this.studentRepository = studentRepository;
         this.courseRepository = courseRepository;
+        this.semesterRepository = semesterRepository;
         this.enrollmentRepository = enrollmentRepository;
     }
 
@@ -51,8 +55,8 @@ public class EnrollmentController {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new IllegalArgumentException("Course was not found by ID: " + courseId));
 
-        Semester semester = new Semester("semester", java.time.LocalDate.now(),
-                java.time.LocalDate.now().plusMonths(5));
+        Semester semester = semesterRepository.findById(semesterId)
+                .orElseThrow(() -> new IllegalArgumentException("Semester not found: " + semesterId));
 
         SemesterRecord record = enrollmentRepository
                 .findByStudentStudentIDAndSemesterId(studentId, semesterId);
