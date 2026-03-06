@@ -76,6 +76,8 @@ public class SemesterRecord {
         return credits == 0 ? 0.0 : points / credits;
     }
 
+    public String getId() { return id; }
+
     public EnrollmentStatus getStatus() {
         return status;
     }
