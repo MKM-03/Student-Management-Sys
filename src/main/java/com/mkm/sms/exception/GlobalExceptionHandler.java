@@ -21,4 +21,13 @@ public class GlobalExceptionHandler {
                 "timestamp", LocalDate.now().toString()
         ));
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, Object>> handleGeneral(Exception exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
+                "status", 500,
+                "error", "Something went wrong: " + exception.getMessage(),
+                "timestamp", LocalDate.now().toString()
+        ));
+    }
 }
